@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\onetoone.proto" GrpcServices="Client" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.32.0" />
+  </ItemGroup>
+
+</Project>

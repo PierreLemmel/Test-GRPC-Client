@@ -1,0 +1,18 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "TestGRPC.Client";
+
+package onetoone;
+
+service OneToOne {
+	rpc AddNumbers (AddNumbersRequest) returns (AddNumbersResponse);
+}
+
+message AddNumbersRequest {
+	int32 lhs = 1;
+	int32 rhs = 2;
+}
+
+message AddNumbersResponse {
+	int32 result = 1;
+}
