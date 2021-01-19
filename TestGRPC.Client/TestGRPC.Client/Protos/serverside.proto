@@ -1,0 +1,18 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "TestGRPC.Client";
+
+package testGRPC;
+
+service ServerSide {
+	rpc Count (CountRequest) returns (stream CountResponse);
+}
+
+message CountRequest {
+	int32 from = 1;
+	int32 to = 2;
+}
+
+message CountResponse {
+	int32 current = 1;
+}

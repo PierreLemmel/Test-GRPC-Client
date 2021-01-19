@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using TestGRPC.Client.CLI;
 using static TestGRPC.Client.OneToOne;
+using static TestGRPC.Client.ServerSide;
 
 GrpcChannel CreateChannel()
 {
@@ -19,6 +20,13 @@ Func<ISample>[] sampleFactories = new Func<ISample>[]
         OneToOneClient client = new OneToOneClient(channel);
         OneToOneSample sample = new OneToOneSample(client);
         return sample;
+    },
+    () =>
+    {
+        GrpcChannel channel = CreateChannel();
+        ServerSideClient client = new ServerSideClient(channel);
+        ServerSideSample sample = new ServerSideSample(client);
+        return sample;
     }
 };
 
@@ -28,6 +36,7 @@ do
 {
     Console.WriteLine("Choose sample to run :");
     Console.WriteLine(" 1 - OneToOne");
+    Console.WriteLine(" 2 - Serverside streaming");
     Console.WriteLine();
     int input = MoreConsole.ReadInt();
 

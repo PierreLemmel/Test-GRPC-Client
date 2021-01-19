@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\serverside.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\serverside.proto" GrpcServices="Client" />
     <Protobuf Include="Protos\onetoone.proto" GrpcServices="Client" />
   </ItemGroup>
   
