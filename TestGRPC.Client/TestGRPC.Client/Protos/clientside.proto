@@ -1,0 +1,17 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "TestGRPC.Client";
+
+package testGRPC;
+
+service ClientSide {
+	rpc Gather (stream GatherRequest) returns (GatherResponse);
+}
+
+message GatherRequest {
+	string msg = 1;
+}
+
+message GatherResponse {
+	string result = 1;
+}
