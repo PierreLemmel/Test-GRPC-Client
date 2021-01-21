@@ -1,0 +1,23 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "TestGRPC.Client";
+
+package testGRPC;
+
+service Chat {
+	rpc Conversation (stream SentMessage) returns (stream ReceivedMessage);
+}
+
+message SentMessage {
+	MessageBody body = 1;
+}
+
+message ReceivedMessage {
+	string author = 1;
+	MessageBody body = 2;
+}
+
+message MessageBody {
+	string time = 1;
+	string content = 2;
+}

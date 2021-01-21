@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using TestGRPC.Client.CLI;
+using static TestGRPC.Client.Chat;
 using static TestGRPC.Client.ClientSide;
 using static TestGRPC.Client.OneToOne;
 using static TestGRPC.Client.ServerSide;
@@ -35,6 +36,13 @@ Func<ISample>[] sampleFactories = new Func<ISample>[]
         ClientSideClient client = new(channel);
         ClientSideSample sample = new(client);
         return sample;
+    },
+    () =>
+    {
+        GrpcChannel channel = CreateChannel();
+        ChatClient client = new(channel);
+        ChatSample sample = new(client);
+        return sample;
     }
 };
 
@@ -42,10 +50,11 @@ int sampleCount = sampleFactories.Length;
 
 do
 {
-    Console.WriteLine("Choose sample to run :");
+    Console.WriteLine("Choose sample to run:");
     Console.WriteLine(" 1 - OneToOne");
     Console.WriteLine(" 2 - ServerSide streaming");
     Console.WriteLine(" 3 - ClientSide streaming");
+    Console.WriteLine(" 4 - Bidirectional streaming");
     Console.WriteLine();
     int input = MoreConsole.ReadInt();
 
